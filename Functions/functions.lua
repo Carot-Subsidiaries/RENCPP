@@ -96,10 +96,10 @@ function functions:get(script: string, ...) -- made by @.wyv_
             "DEX" = loadstring(game:HttpGet("https://raw.githubusercontent.com/infyiff/backup/main/dex.lua")),
             "STATS" = function()
                 local name, version = identifyexecutor()
-                print("You are currently using "..name.." version "..version..".")
-                print(game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name .. " -- " .. game.PlaceId)
-                print(getplayer().Name .. " -- " .. game.Players.LocalPlayer.UserId)
-                print(getplayer().Platform.Name)
+                print("You are currently using " .. name .. " version " .. version .. ".")
+                print("The game you're currently playing is " .. game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name .. " -- " .. game.PlaceId)
+                print("The account you're currently using is " .. getplayer().Name .. " -- " .. game.Players.LocalPlayer.UserId)
+                print("The operating system you're currently using is " .. getdevice())
             end
         }
     if scripts[script] then
