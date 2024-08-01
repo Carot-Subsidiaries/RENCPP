@@ -1,3 +1,3 @@
 [Functions](/Functions/README.md)
 
-[Legal stuff](/LISCENSE)
+[Legal stuff](/LICENSE)
