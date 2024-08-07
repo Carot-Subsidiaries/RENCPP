@@ -55,7 +55,7 @@ getgenv().getdevice = function(): string -- @clipflip.rblx
 end
 
 getgenv().getaffiliateid = function(): string
-    return "none"
+    return "moREnc"
 end
 
 getgenv().customprint = function(text: string, properties: table, imageId: rbxasset) --[[ NOT RECOMMENDED ATM
