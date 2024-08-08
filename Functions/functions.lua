@@ -50,12 +50,12 @@ getgenv().runanimation = function(animationId: any, player: Player) -- @.wyv_
     end
 end
 
-getgenv().getdevice = function(): string -- @clipflip.rblx
+getgenv().getdevice = function(): string -- idea: @clipflip.rblx
     return tostring(game:GetService("UserInputService"):GetPlatform()):split(".")[3]
 end
 
 getgenv().getaffiliateid = function(): string
-    return "moREnc"
+    return "none"
 end
 
 getgenv().customprint = function(text: string, properties: table, imageId: rbxasset) --[[ NOT RECOMMENDED ATM
@@ -75,6 +75,29 @@ end
 
 getgenv().join = function(placeID: number, jobID: string)
     game:GetService("TeleportService"):TeleportToPlaceInstance(placeID, jobID, getplayer())
+end
+
+getgenv().firesignal = function(instance: Instance, signalName: string, args: any)
+    if instance and signalName then
+        local signal = instance[signalName]
+        if signal and signal:IsA("RBXScriptSignal") then
+            for _, connection in ipairs(getconnections(signal)) do
+                if args then
+                    connection:Fire(args)
+                else
+                    connection:Fire()
+                end
+            end
+        end
+    end
+end
+
+getgenv().firetouchinterest = function(part: Instance, touched: boolean)
+    firesignal(part, touched and "Touched" or touched == false and "TouchEnded" or "Touched")
+end
+
+getgenv().fireproximityprompt = function(prompt: Instance, triggered: boolean, hold: boolean)
+    firesignal(prompt, hold and (triggered and "PromptButtonHoldBegan" or "PromptButtonHoldEnded") or (triggered and "Triggered" or triggered == false and "TriggerEnded" or "Triggered"))
 end
 
 getgenv().firetouchtransmitter = firetouchinterest
